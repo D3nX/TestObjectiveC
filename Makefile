@@ -5,7 +5,9 @@ NAME = prog
 OBJC_FLAGS = -fobjc-arc -fmodules
 
 all:
-	clang $(SRC) $(OBJC_FLAGS) $(INCLUDE) $(FLAGS) -o $(NAME)
+	gcc `gnustep-config --objc-flags` $(SRC) $(FLAGS) $(INCLUDE) -lgnustep-base -lobjc -o $(NAME)
+# clang $(SRC) $(OBJC_FLAGS) $(INCLUDE) $(FLAGS) -o $(NAME)
 
 clean:
 	rm -rf $(NAME)
+	rm -rf *.d

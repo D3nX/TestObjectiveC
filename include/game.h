@@ -5,6 +5,9 @@
 #include <SFML/Graphics.h>
 
 @interface Game : NSObject
+{
+    sfRectangleShape *_rect;
+}
 
 @property sfRectangleShape *rect;
 

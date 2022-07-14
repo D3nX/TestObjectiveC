@@ -27,11 +27,12 @@ static int screenHeight = 0;
                                                     [title UTF8String],
                                                     sfClose,
                                                     NULL);
-
     sfRenderWindow_setFramerateLimit(window, 60);
 
     self.rect = sfRectangleShape_create();
     sfRectangleShape_setSize(self.rect, (sfVector2f) {20, 20});
+
+        NSLog(@"here!");
 
     while (sfRenderWindow_isOpen(window)) {
         sfEvent event;
@@ -51,15 +52,21 @@ static int screenHeight = 0;
 
 + (int) getHeight { return screenHeight; }
 
+- (sfRectangleShape *) rect { return _rect; }
+- (void) setRect: (sfRectangleShape *)argRect { _rect = argRect; }
+
 @end
 
 int main(void) {
-    @autoreleasepool {
-        Game *game = [[Game alloc] init];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-        [game run: 1280 andHeight: 720 andPixelsDepth: 32];
+    NSLog(@"Let's go!");
+    Game *game = [[Game alloc] init];
 
-        NSLog(@"So, the resolution was %dx%d pixels!", [Game getWidth], [Game getHeight]);
-    }
+    [game run: 1280 andHeight: 720 andPixelsDepth: 32];
+
+    NSLog(@"So, the resolution was %dx%d pixels!", [Game getWidth], [Game getHeight]);
+
+    [pool drain];
     return 0;
 }
