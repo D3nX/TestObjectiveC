@@ -58,15 +58,15 @@ static int screenHeight = 0;
 @end
 
 int main(void) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
 
-    NSLog(@"Let's go!");
-    Game *game = [[Game alloc] init];
+        NSLog(@"Let's go!");
+        Game *game = [[Game alloc] init];
 
-    [game run: 1280 andHeight: 720 andPixelsDepth: 32];
+        [game run: 1280 andHeight: 720 andPixelsDepth: 32];
 
-    NSLog(@"So, the resolution was %dx%d pixels!", [Game getWidth], [Game getHeight]);
+        NSLog(@"So, the resolution was %dx%d pixels!", [Game getWidth], [Game getHeight]);
 
-    [pool drain];
+    }
     return 0;
 }
